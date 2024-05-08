@@ -1,9 +1,14 @@
-//Defirnir las 5 variables con datos personales
-const nombre = "Irina";
-const apellido = "Ochoa";
-const edad = 23;
-const tipoDeSangre = "B+";
-const carrera = "Ingeniería en Tecnologías de la Información";
+//Objeto con datos personales
+const profile = {
+    nombre: "Irina",
+    apellido: "Ochoa",
+    edad: 23,
+    tipoDeSangre: "B+",
+    carrera: {
+        nombre: "Ingeniería en Tecnologías de la Información",
+        semestreActual: 9
+    }
+};
 let isOnline;
 
 //Se va a repetir mientras el usuario no ingrese "si" o "no"
@@ -22,6 +27,9 @@ do {
 //Si el usuario está en línea, entonces mostrara el template string
 if (isOnline === "si") {
     //Template string
-    document.write(`Hola, mi nombre es ${nombre} ${apellido}, tengo ${edad} años, mi tipo de sangre es ${tipoDeSangre} y estudio la carrera de ${carrera}.`);
+    document.write(`Hola, mi nombre es ${profile.nombre} ${profile.apellido}, 
+    tengo ${profile.edad} años, mi tipo de sangre es ${profile.tipoDeSangre} 
+    y estudio la carrera de ${profile.carrera.nombre} en el semestre ${profile.carrera.semestreActual} de un total
+    de ${profile.carrera?.toalSemestre || 10} semestres.`);
 }
 
