@@ -9,27 +9,23 @@ const profile = {
         semestreActual: 9
     }
 };
-let isOnline;
 
-//Se va a repetir mientras el usuario no ingrese "si" o "no"
-do {
-    //Preguntar al usuario si está en línea
-    isOnline = prompt("¿Estás en línea? (SI/NO)").toLowerCase();
 
-    //Validar la respuesta con el operador ternario
-    /**
-     * Si lo que ingresó el usuario no es "si" ni "no", entonces mostrar un mensaje de alerta
-     */
-    (isOnline !== "si" && isOnline !== "no") ? alert("Por favor, ingresa una respuesta válida") : null;
+function printProfile(id = "etiqueta3") {
+    // Se obtiene el elemento donde se imprimirá el template
+    const container = document.getElementById(id);
 
-} while (isOnline !== "si" && isOnline !== "no");
-
-//Si el usuario está en línea, entonces mostrara el template string
-if (isOnline === "si") {
-    //Template string
-    document.write(`Hola, mi nombre es ${profile.nombre} ${profile.apellido}, 
+    // Se crea el template
+    const template = `
+    Hola, mi nombre es ${profile.nombre} ${profile.apellido}, 
     tengo ${profile.edad} años, mi tipo de sangre es ${profile.tipoDeSangre} 
     y estudio la carrera de ${profile.carrera.nombre} en el semestre ${profile.carrera.semestreActual} de un total
-    de ${profile.carrera?.toalSemestre || 10} semestres.`);
+    de ${profile.carrera?.toalSemestre || 10} semestres.
+    `;
+
+    // Se imprime el template en el contenedor
+    container.innerHTML = template;
 }
+
+printProfile();
 
