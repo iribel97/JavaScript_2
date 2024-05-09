@@ -5,6 +5,9 @@ const edad = 23;
 const fechaNacimiento = "30/11/2000";
 const carrera = "Ingeniería en Tecnologías de la Información";
 
+//definir la variable todos
+let {...todos} = hobbies;
+
 //Definiendo un objeto usando property shorthand
 const datosPersonales = {
     nombre,
@@ -22,6 +25,7 @@ do{
 
 if(respuesta === "SI"){
     printProfile();
+    console.log(todos)
 }
 
 function printProfile(id = "etiqueta3") {
