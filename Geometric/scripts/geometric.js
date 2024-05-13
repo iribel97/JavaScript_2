@@ -1,3 +1,6 @@
+import {perimetro} from "./perimeter.js";
+import {area} from "./area.js";
+
 //Definiendo 3 objetos
 const rectangulo1 = {
     altura: 10,
@@ -10,13 +13,6 @@ const rectangulo2 = {
 const rectangulo3 = {
     altura: 50,
     ancho: 60
-}
-//Desarrollar las funciones "perímetro" y "área"
-function perimetro(rectangulo){
-    return 2*(rectangulo.altura + rectangulo.ancho);
-}
-function area(rectangulo){
-    return rectangulo.altura * rectangulo.ancho;
 }
 
 document.querySelector("main").innerHTML = `
