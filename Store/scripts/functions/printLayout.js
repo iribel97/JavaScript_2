@@ -1,5 +1,3 @@
-import options from '../Json/options.json' with {type: 'json'}
-
 /*
 const options = [
   {
@@ -27,13 +25,20 @@ const options = [
 */
 //traer datos de un documento json
 function getOptions() {
-  console.log(options)
-  // fetch("../Json/options.json")
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     return data;
-  //   });
-  return options
+  return fetch("./scripts/Json/options.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.options;
+    })
+    .catch((error) => {
+      console.error('Hubo un problema con la operación fetch:', error);
+      throw error;
+    });
 }
 
 function hideSearch() {
@@ -47,42 +52,52 @@ function hideSearch() {
 
 function printNavBar(id) {
   let template = "";
-  let opts = getOptions();
-  for (const each of opts.options) {
-    template =
-      template +
-      `
-      <li class="nav-li">
-        <a class="nav-a" href="${each.href}">${each.title}</a>
-      </li>
-    `;
-  }
-  const selector = document.getElementById(id);
-  selector.innerHTML = template;
+  getOptions()
+    .then((opts) => {
+      for (const each of opts) {
+        template +=
+          `
+          <li class="nav-li">
+            <a class="nav-a" href="${each.href}">${each.title}</a>
+          </li>
+        `;
+      }
+      const selector = document.getElementById(id);
+      selector.innerHTML = template;
+    })
+    .catch((error) => {
+      console.error('Hubo un error al obtener las opciones:', error);
+    });
 }
+
 
 function printFooter(id) {
   let template = "";
-  let opts = getOptions();
-  for (const each of opts.options) {
-    template =
-      template +
-      `
+  getOptions()
+    .then((opts) => {
+      for (const each of opts) {
+        template =
+          template +
+          `
         <ul class="footer-ul">
         <li class="footer-main-item">
           <a class="footer-a" href="./index.html">${each.title}</a>
         </li>
         ${each.refs
-        .map(
-          (ref) =>
-            `<li class="footer-li"><a class="footer-a" href="./index.html">${ref}</a></li>`
-        )
-        .join("")}
+            .map(
+              (ref) =>
+                `<li class="footer-li"><a class="footer-a" href="./index.html">${ref}</a></li>`
+            )
+            .join("")}
       </ul>
     `;
-  }
-  const selector = document.getElementById(id);
-  selector.innerHTML = template;
+      }
+      const selector = document.getElementById(id);
+      selector.innerHTML = template;
+    })
+    .catch((error) => {
+      console.error('Hubo un error al obtener las opciones:', error);
+    });
 }
 
 function printIcons() {
