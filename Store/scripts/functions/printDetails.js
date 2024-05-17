@@ -1,10 +1,11 @@
-import { products } from "../products.js";	
+import { getProducts } from "../products.js";
 import { saveProd } from "./saveproduct.js";
 import { changeSubtotal } from "./changeSubtotal.js";
 
 function printDetails(id) {
-  const product = products.find((each) => each.id === id);
-  const detailsTemplate = `
+  getProducts().then((products) => {
+    const product = products.find((each) => each.id === id);
+    const detailsTemplate = `
     <section class="product-images-block">
     <div class="product-images">
       ${product.images
@@ -21,12 +22,11 @@ function printDetails(id) {
       <form class="product-selector">
         <fieldset class="product-fieldset">
           <label class="product-label" for="color">Color</label>
-          <select class="product-select" type="text" placeholder="Selecciona un color" id="color-${
-            product.id
-          }">
+          <select class="product-select" type="text" placeholder="Selecciona un color" id="color-${product.id
+      }">
             ${product.colors
-              .map((each) => `<option value=${each}>${each}</option>`)
-              .join("")}
+        .map((each) => `<option value=${each}>${each}</option>`)
+        .join("")}
           </select>
         </fieldset>
       </form>
@@ -65,22 +65,23 @@ function printDetails(id) {
         </ul>
         <div class="checkout-process">
           <div class="top">
-            <input type="number" min="1" value="1" id="quantity-${
-              product.id
-            }" />          
-            <button type="button" id="add-to-cart-${product.id}" id=${
-              product.id
-            } class="cart-btn">Añadir al Carrito</button>
+            <input type="number" min="1" value="1" id="quantity-${product.id
+      }" />          
+            <button type="button" id="add-to-cart-${product.id}" id=${product.id
+      } class="cart-btn">Añadir al Carrito</button>
           </div>
         </div>
       </div>
     </div>
   `;
-  const detailsSelector = document.querySelector("#details");
-  detailsSelector.innerHTML = detailsTemplate;
+    const detailsSelector = document.querySelector("#details");
+    detailsSelector.innerHTML = detailsTemplate;
 
-  document.querySelector(`#add-to-cart-${product.id}`).addEventListener('click', () => saveProd(product.id));
-  document.querySelector(`input`).addEventListener('change', changeSubtotal);
+    document.querySelector(`#add-to-cart-${product.id}`).addEventListener('click', () => saveProd(product.id));
+    document.querySelector(`input`).addEventListener('change', changeSubtotal);
+  }).catch((error) => {
+    console.error('Hubo un problema al obtener los productos:', error);
+  });
 }
 
 export { printDetails };
