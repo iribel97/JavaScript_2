@@ -2,6 +2,7 @@ import { getProducts } from "./products.js";
 import { printIcons, printNavBar, printFooter, hideSearch} from "./functions/printLayout.js";
 import { printDetails } from "./functions/printDetails.js";
 import { printProductCards } from "./functions/printProductCards.js";
+import {changeIcons} from "./functions/enLinea.js";
 
 hideSearch();
 printIcons();
@@ -20,3 +21,10 @@ getProducts().then((products) => {
   console.error('Hubo un problema al obtener los productos:', error);
 });
 
+changeIcons();
+
+document.getElementById("loginCheck").addEventListener("click", () => {
+  localStorage.setItem("online", false);
+  changeIcons();
+  window.location.href = "index.html";
+}); 

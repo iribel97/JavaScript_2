@@ -15,13 +15,17 @@
             <a href="./index.html" class="header-logo">
                 <img class="header-logo-img" src="./assets/tiendamia-logo.svg" width="218" alt="Logo store" />
             </a>
+            <form class="header-form">
+                <input class="header-input" type="text" placeholder="Search" id="search" />
+            </form>
+            <ul class="header-social"></ul>
         </div>
         <nav id="navbar"></nav>
     </header>
     <div class="formulario-contenedor">
         <div class=" login-container">
             <h1>Ingresar</h1>
-            <form id="loginForm" action="dashboard.html" method="post" onsubmit="return validateForm()">
+            <form id="loginForm">
                 <input type="email" id="email" name="email" placeholder="Tu dirección de E-mail" required />
                 <input type="password" id="password" name="password" placeholder="Contraseña" required />
                 <a href="#">¿Olvidaste tu contraseña?</a>
@@ -45,6 +49,8 @@
         </div>
 
     </div>
+
+    <script type="module" src="./scripts/login.js"></script>
 </body>
 
 </html>
