@@ -32,3 +32,9 @@ var family = [
 ];
 console.log('Datos personales:', data);
 console.log('Familiares:', family);
+// muestra por consola los tipos de datos de algunos datos primitivos, de la interfaz, de los objetos y del array.
+console.log('Tipo de dato de firstName:', typeof firstName);
+console.log('Tipo de dato de age:', typeof age);
+console.log('Tipo de dato de data:', typeof data);
+console.log('Tipo de dato de family:', typeof family);
+console.log('Tipo de dato de family[0]:', typeof family[0].isEmployed);
