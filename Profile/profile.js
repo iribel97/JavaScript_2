@@ -50,3 +50,40 @@ function isString(value) {
 console.log('¿firstName es de tipo string?', isString(firstName));
 console.log('¿age es de tipo string?', isString(age));
 console.log('¿data es de tipo string?', isString(data));
+//función genérica que tome un array de personas o un array de nombres de personas y devuelva siempre el primer elemento de ese array.
+function firstElement(array) {
+    return array[0];
+}
+console.log('Primer elemento de data:', firstElement([data]));
+console.log('Primer elemento de family:', firstElement(family));
+//Implementa una clase genérica Portfolio
+var Portfolio = /** @class */ (function () {
+    function Portfolio() {
+        this.elements = [];
+    }
+    Portfolio.prototype.add = function (element) {
+        this.elements.push(element);
+    };
+    Portfolio.prototype.get = function () {
+        return this.elements;
+    };
+    Portfolio.prototype.sum = function () {
+        return this.elements.reduce(function (acc, element) { return acc + element; }, 0);
+    };
+    Portfolio.prototype.concat = function () {
+        return this.elements.reduce(function (acc, element) { return acc + element; }, '');
+    };
+    return Portfolio;
+}());
+var portfolio = new Portfolio();
+portfolio.add(1);
+portfolio.add(2);
+portfolio.add(3);
+console.log('Elementos del portfolio:', portfolio.get());
+console.log('Suma de los elementos del portfolio:', portfolio.sum());
+var portfolio2 = new Portfolio();
+portfolio2.add('Hola');
+portfolio2.add(' ');
+portfolio2.add('Mundo');
+console.log('Elementos del portfolio:', portfolio2.get());
+console.log('Concatenación de los elementos del portfolio:', portfolio2.concat());
