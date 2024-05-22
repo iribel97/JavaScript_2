@@ -43,3 +43,10 @@ console.log('Existe la propiedad firstName en data:', 'firstName' in data);
 console.log('Existe la propiedad lastName en data:', 'lastName' in data);
 console.log('Existe la propiedad firstName en family[0]:', 'firstName' in family[0]);
 console.log('Existe la propiedad correo en family[0]:', 'correo' in family[0]);
+//verifica si algunos datos son de determinado tipo. Muestra por consola los resultados.
+function isString(value) {
+    return typeof value === 'string';
+}
+console.log('¿firstName es de tipo string?', isString(firstName));
+console.log('¿age es de tipo string?', isString(age));
+console.log('¿data es de tipo string?', isString(data));
