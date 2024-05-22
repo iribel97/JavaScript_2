@@ -38,3 +38,8 @@ console.log('Tipo de dato de age:', typeof age);
 console.log('Tipo de dato de data:', typeof data);
 console.log('Tipo de dato de family:', typeof family);
 console.log('Tipo de dato de family[0]:', typeof family[0].isEmployed);
+//verifica algunas propiedades existentes/inexistente de las instancias de las personas construidas. Muestra por consola los resultados.
+console.log('Existe la propiedad firstName en data:', 'firstName' in data);
+console.log('Existe la propiedad lastName en data:', 'lastName' in data);
+console.log('Existe la propiedad firstName en family[0]:', 'firstName' in family[0]);
+console.log('Existe la propiedad correo en family[0]:', 'correo' in family[0]);
